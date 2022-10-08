@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Test {
+	
+	
 	int no;
 	String name;
 	
@@ -12,7 +14,7 @@ public class Test {
 		this.no=no;
 		this.name=name;
 	}
-	
+
 	
 	@Override
 	public int hashCode() {
@@ -53,7 +55,8 @@ public class Test {
 		System.out.println(t3Hash ^ (t3Hash >>> 16));
 		System.out.println(t3Hash&(size-1));
 		
-		
+		System.out.println(8/3);
+		System.out.println((float)8/3);
 		
 		
 		
