@@ -3,6 +3,13 @@ package inflearn._8eight;
 import java.util.*;
 public class Inf08_07 {
 
+	// n==r -> 1
+	// n >= r 
+	// r 0 -> 1
+	
+	// n = 5 r =3
+	// arr[5][3] -> 값을 메모
+	
 	static int[][] arr;
 	
 	public static void main(String[] args) {
@@ -24,7 +31,6 @@ public class Inf08_07 {
 		if(r==1) {
 			return n;
 		}
-		
 		if(arr[n-1][r-1]==0) {
 			arr[n-1][r-1]=memo(n-1,r-1);
 		}

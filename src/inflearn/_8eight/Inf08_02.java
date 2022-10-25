@@ -18,12 +18,12 @@ public class Inf08_02 {
 	static void load(int[] in, int curr, int n) {
 		if(sum>=c) return;
 		if(sum>max) max=sum; 
-		if(curr==n) return;
+		if(curr==n) return; 
 		// 넣은거
-		sum+=in[curr];
-		load(in,curr+1, n);
-		sum-=in[curr];
+		sum+=in[curr]; 
+		load(in,curr+1, n); 
 		// 뺀거
-		load(in,curr+1,n);
+		sum-=in[curr];
+		load(in,curr+1,n); 
 	}
 }

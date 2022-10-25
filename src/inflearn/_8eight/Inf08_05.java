@@ -3,7 +3,7 @@ package inflearn._8eight;
 import java.util.*;
 public class Inf08_05 {
 	static int[] coin=null;
-	static int min=9999;
+	static int min=9999; 
 	static int n=0;
 	
 	public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class Inf08_05 {
 		}
 		for(int i=n-1;i>=0;i--) {
 			int s = sum+coin[i];
-			if(s>money) return;
+			if(s>money) continue;
 			coiner(count+1,money,s);
 		}
 	}
