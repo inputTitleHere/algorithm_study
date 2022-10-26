@@ -29,3 +29,5 @@ public class Inf10_05 {
 		System.out.println(dp[m]);
 	}
 }
+
+
