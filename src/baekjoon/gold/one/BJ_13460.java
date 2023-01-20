@@ -9,15 +9,14 @@ public class BJ_13460 {
 	public static int[] dx = { 0, 1, 0, -1 };
 	public static int[] dy = { -1, 0, 1, 0 };
 
+	static Pos r,b,o;
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer stk = new StringTokenizer(br.readLine());
 		int n = Integer.parseInt(stk.nextToken()); // 행
 		int m = Integer.parseInt(stk.nextToken()); // 열
 		char[][] board = new char[n][m];
-		Pos R;
-		Pos B;
-		Pos O;
 		for (int i = 0; i < n; i++) {
 			String next = br.readLine();
 			for (int j = 0; j < m; j++) {
@@ -25,11 +24,11 @@ public class BJ_13460 {
 				board[i][j] = c;
 				if (c == 'R' || c == 'O' || c == 'B') {
 					if (c == 'R')
-						R = new Pos(j, i);
+						r = new Pos(j, i);
 					if (c == 'B')
-						B = new Pos(j, i);
+						b = new Pos(j, i);
 					if (c == 'O')
-						O = new Pos(j, i);
+						o = new Pos(j, i);
 				}
 			}
 		}
@@ -37,8 +36,17 @@ public class BJ_13460 {
 
 	}
 
-	public static void move() {
-
+	public static void move(char[][] board) {
+		for (int i = 0; i < 4; i++) {
+			int dirx = dx[i];
+			int diry = dy[i];
+			// 4방 확인 
+			if(board[r.y+diry][r.x+dirx]=='.') {
+				
+			}
+			
+			
+		}
 	}
 }
 
