@@ -10,8 +10,9 @@ public class Solution_2805_백승윤 {
 		StringBuilder sb = new StringBuilder();
 		int tc = Integer.parseInt(br.readLine());
 		for(int t=1;t<=tc;t++) {
-			sb.append("#").append(t).append(" ").append(solve(br)).append("\n");
+//			sb.append("#").append(t).append(" ").append(solve(br)).append("\n");
 			
+			sb.append("#").append(t).append(" ").append(manhattan(br)).append("\n");
 		}
 		System.out.println(sb.toString());
 	}
@@ -36,6 +37,31 @@ public class Solution_2805_백승윤 {
 		}
 		for(int i=0;i<n;i++) {
 			sum+=farm[n/2][i];
+		}
+		return sum;
+	}
+	/**
+	 * 맨?하탄
+	 */
+	
+	static int manhattan(BufferedReader br) throws IOException {
+		int n = Integer.parseInt(br.readLine());
+		int[][] farm = new int[n][n];
+		for(int i=0;i<n;i++) {
+			String input = br.readLine();
+			for(int j=0;j<n;j++) {
+				farm[i][j]=input.charAt(j)-'0';
+			}
+		}
+		int sum=0;
+		
+		int center = n/2;
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				if(Math.abs(n/2-i)+Math.abs(n/2-j)<=n/2) {
+					sum+=farm[i][j];
+				}
+			}
 		}
 		return sum;
 	}

@@ -39,11 +39,13 @@ public class Solution_1208_백승윤 {
 					lt = preLt;
 					while (lt != 99 && input[lt + 1] == input[0])
 						lt++;
+					preLt=lt;
 				}
 				if (rt == 100) {
 					rt = preRt;
 					while (rt != 0 && input[rt - 1] == input[99])
 						rt--;
+					preRt=rt;
 				}
 			}
 			// 시도횟수 소진
