@@ -8,12 +8,13 @@ public class BJ_1914 {
 	static StringBuilder sb = new StringBuilder();
 
 	public static void main(String[] args) {
+		// 하노이 알고리즘이 있었음. 
+		// 난 몰랐음 ㅋ
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		// 일단 이동 총횟수 연산
-		BigInteger bi = new BigInteger("2").pow(n).subtract(BigInteger.ONE); 
-		
-//		long moves = (1L << n) - 1; // 이동횟수
+//		long moves = (1L << n) - 1; // 이동횟수 // n < 100이므로 Long도 2^64까지라 터진다.
+		BigInteger bi = new BigInteger("2").pow(n).subtract(BigInteger.ONE); 		
 		sb.append(bi).append("\n");
 		// 진짜 어려운건 이동 시뮬
 		if (n <= 20) {
