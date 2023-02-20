@@ -53,19 +53,21 @@ public class Solution_14510_User_백승윤 {
 						optr--;
 					} else {
 						diffs[optr] -= 1;
-						if (diffs[optr] == 0)
+						days++;
+						if (diffs[optr] == 0) {
 							while (optr > -1 && diffs[optr] == 0) {
 								optr--;
-							}
-						days++;
+							}							
+						}
 					}
 				}
 				// 2자라기 (짝수일 지나기)
 				while (eptr > -1 && diffs[eptr] < 2) {
 					eptr--;
 				}
-				if (optr == -1)
-					break;
+				if (optr == -1) {
+					break;					
+				}
 				if (eptr < 0) {
 					days++; // 그냥 보내기
 				} else {
