@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -60,6 +61,7 @@ public class Main_17135_백승윤 {
 		for (int i = 0; i < n + 1; i++) {
 			System.arraycopy(board[i], 0, localBoard[i], 0, m);
 		}
+		
 		// 시뮬
 		while (localEnemyCount > 0) {
 			int[][] atk = new int[3][];
@@ -71,7 +73,11 @@ public class Main_17135_백승윤 {
 				Queue<int[]> que = new ArrayDeque<int[]>();
 				que.add(curr);
 				// 다음부터 2차원 visited를 마스킹하는 객기를 부리지 않겠습니다.
-				int visited = (1 << (n - 1)) | (1 << (ar + 16)); // 비트마스크 1~15(행), 16~31(열);
+//				int visited = (1 << (n - 1)) | (1 << (ar + 16)); // 비트마스크 0~15(행), 16~31(열);
+				
+				boolean[][] vismap = new boolean[n][m];
+				vismap[n-1][ar]=true;
+				
 				// 가까운것 부터, 왼쪽 부터
 				while (!que.isEmpty()) {
 					int[] check = que.poll();
@@ -85,22 +91,25 @@ public class Main_17135_백승윤 {
 						// 좌 
 						int ly = check[0];
 						int lx = check[1] - 1;
-						if (lx >= 0 && ((visited & (1 << ly))==0 || (visited & 1 << (16 + lx)) == 0)) { // 좌로가서 좌측만 확인
-							visited |= (1 << ly) | (1 << (lx + 16));
-							que.add(new int[] { ly, lx, check[2] + 1 });
-						}
-						// 우
-						ly = check[0];
-						lx = check[1] + 1;
-						if (lx < m && ((visited & (1 << ly))==0 || (visited & 1 << (16 + lx)) == 0)) { // 우측만 확인
-							visited |= (1 << ly) | (1 << (lx + 16));
+						if (lx >= 0 && !vismap[ly][lx]) { // 좌로가서 좌측만 확인
+//							visited |= (1 << ly) | (1 << (lx + 16));
+							vismap[ly][lx]=true;
 							que.add(new int[] { ly, lx, check[2] + 1 });
 						}
 						// 상
 						ly = check[0] - 1;
 						lx = check[1];
-						if (ly >= 0 && ((visited & (1 << ly))==0 || (visited & 1 << (16 + lx)) == 0)) { // 위로가는거 상단만 확인
-							visited |= (1 << ly) | (1 << (lx + 16));
+						if (ly >= 0 && !vismap[ly][lx]) { // 위로가는거 상단만 확인
+//							visited |= (1 << ly) | (1 << (lx + 16));
+							vismap[ly][lx]=true;
+							que.add(new int[] { ly, lx, check[2] + 1 });
+						}
+						// 우
+						ly = check[0];
+						lx = check[1] + 1;
+						if (lx < m && !vismap[ly][lx]) { // 우측만 확인
+//							visited |= (1 << ly) | (1 << (lx + 16));
+							vismap[ly][lx]=true;
 							que.add(new int[] { ly, lx, check[2] + 1 });
 						}
 					}
@@ -108,8 +117,9 @@ public class Main_17135_백승윤 {
 				ptr++; // 궁수 번호 추가.
 			} // 궁수 목표 탐색 끝
 			for (int[] target : atk) {
-				if (target == null)
+				if (target == null) {
 					continue;
+				}
 				if (localBoard[target[0]][target[1]] == 1) { // 처음 제거할 때만
 					localKillCount++;
 					localEnemyCount--;
@@ -135,5 +145,4 @@ public class Main_17135_백승윤 {
 		killCount = Math.max(localKillCount, killCount);
 		return;
 	}
-
 }
