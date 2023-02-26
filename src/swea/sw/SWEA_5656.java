@@ -120,9 +120,6 @@ public class SWEA_5656 { // TODO
 		for (int i = 0; i < w; i++) {
 			choice[step] = i;
 			combi(choice, step + 1, i);
-			if(i==6) break;
 		}
-
 	}
-
 }
