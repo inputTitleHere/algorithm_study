@@ -27,13 +27,13 @@ public class HZRCup_B2 {
 				continue;
 			}
 			long max=0L;
-			for(int j=62;j>0;j--) {
-				if(((1<<j) & bitmask) !=0) {
-					max=1<<j;
+			for(int j=63;j>=0;j--) {
+				max=(1L<<j) & bitmask;
+				if(max !=0) {
+					break;
 				}
 			}
 			sb.append(max).append("\n");
-			
 		}
 		System.out.println(sb.toString());
 	}
