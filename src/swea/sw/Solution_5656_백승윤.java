@@ -8,7 +8,8 @@ import java.util.Arrays;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class SWEA_5656 { // TODO
+// 1418ms
+public class Solution_5656_백승윤 {
 
 	static int n;
 	static int w;
