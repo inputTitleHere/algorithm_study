@@ -36,7 +36,7 @@ public class Solution_2115_백승윤 {
 
 			int[][] dp = new int[n][n - m + 1];
 			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < n - m + 1; j++) {
+				for (int j = 0; j < n - m + 1; j++) { // 캘 수 있는 위치별 최댓값
 					lmax = 0;
 					int[] local = new int[m];
 					boolean[] used = new boolean[m];
@@ -45,14 +45,28 @@ public class Solution_2115_백승윤 {
 					dp[i][j] = lmax;
 				}
 			}
-			for (int i = 0; i < n; i++) {
-				System.out.println(Arrays.toString(dp[i]));
+			
+			int max=0;
+			for(int i=0;i<n;i++) {
+				for(int j=0;j<n-m+1;j++) {
+					int l = dp[i][j];
+					// 같은 행
+					for(int a=j+m;a<n-m+1;a++) {
+						int r = dp[i][a];
+						max = Math.max(max, l+r);
+					}
+					
+					// 다른 행
+					for(int k=i+1;k<n;k++) {
+						for(int o=0;o<n-m+1;o++) {
+							int r = dp[k][o];
+							max = Math.max(max, l+r);
+						}
+					}
+				}
 			}
-			
-			
-			
 			// print
-			sb.append("#").append(tc).append(" ");
+			sb.append("#").append(tc).append(" ").append(max).append("\n");
 
 		}
 		System.out.println(sb.toString());
@@ -80,4 +94,5 @@ public class Solution_2115_백승윤 {
 		dfs(local, sum, step + 1, used);
 
 	}
+	
 }
