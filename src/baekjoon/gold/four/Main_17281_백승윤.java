@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+// Java 11 : 512ms
 public class Main_17281_백승윤 {
 
 	static int n;
