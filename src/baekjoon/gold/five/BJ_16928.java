@@ -15,6 +15,7 @@ public class BJ_16928 {
 		int l = Integer.parseInt(stk.nextToken());
 		int s = Integer.parseInt(stk.nextToken());
 		int[] map = new int[101];
+		boolean[] visited = new boolean[101];
 		for(int i=0;i<101;i++) {
 			map[i]=i;
 		}
@@ -29,9 +30,9 @@ public class BJ_16928 {
 		int pos = 1;
 		Queue<int[]> que = new ArrayDeque<int[]>();
 		que.add(new int[] {1,0});
+		visited[1]=true;
 		while(!que.isEmpty()) {
 			int[] next = que.poll();
-			
 			if(next[0]==100) {
 				System.out.println(next[1]);
 				return;
@@ -41,7 +42,11 @@ public class BJ_16928 {
 				if(move>100) {
 					continue;
 				}
+				if(visited[move]) {
+					continue;
+				}
 				int nextPos = map[move];
+				visited[move]=true;
 				que.add(new int[] {nextPos,next[1]+1});
 			}
 		}
