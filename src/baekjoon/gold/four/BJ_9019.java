@@ -17,24 +17,22 @@ public class BJ_9019 {
 		StringTokenizer stk = null;
 		int t = Integer.parseInt(br.readLine());
 		StringBuilder sb = new StringBuilder();
-		Set<Integer> set = new TreeSet<Integer>();
 		Queue<Order> que = new ArrayDeque<>();
 		
 		for(int tc=0;tc<t;tc++) {
-			set.clear();
+			boolean[] visited = new boolean[10000];
+			que.clear();
 			stk = new StringTokenizer(br.readLine());
 			int start = Integer.parseInt(stk.nextToken());
 			int target = Integer.parseInt(stk.nextToken());
-			Order o = new Order(start, new ArrayList<>());
+			Order o = new Order(start);
 			que.add(o);
-			System.out.println("========================");
 			while(!que.isEmpty()) {
 				Order prev = que.poll();
-				System.out.println(prev.number);
-				System.out.println(prev.order);
+//				System.out.printf("n : %s order : %s\n",prev.number,prev.order);
 				if(prev.number==target) {
 					StringBuilder sbb = new StringBuilder();
-					for(char c : prev.order) {
+					for(char c : prev.carr) {
 						sbb.append(c);
 					}
 					sb.append(sbb.toString()).append("\n");
@@ -42,27 +40,27 @@ public class BJ_9019 {
 				}
 				// D
 				int nexti = (prev.number*2)%10000;
-				if(!set.contains(nexti)) {
-					que.add(new Order(nexti,prev.order,'D'));
-					set.add(nexti);
+				if(!visited[nexti]) {
+					que.add(new Order(nexti,prev.carr,'D'));
+					visited[nexti]=true;
 				}
 				// S
-				nexti = (prev.number-1+10000)%10000;
-				if(!set.contains(nexti)) {
-					que.add(new Order(nexti,prev.order,'S'));
-					set.add(nexti);
+				nexti = (prev.number+9999)%10000;
+				if(!visited[nexti]) {
+					que.add(new Order(nexti,prev.carr,'S'));
+					visited[nexti]=true;
 				}
 				// L
 				nexti = ((prev.number*10)/10000 + prev.number*10)%10000;
-				if(!set.contains(nexti)) {
-					que.add(new Order(nexti,prev.order,'L'));
-					set.add(nexti);
+				if(!visited[nexti]) {
+					que.add(new Order(nexti,prev.carr,'L'));
+					visited[nexti]=true;
 				}
 				// R
 				nexti = ((prev.number%10)*1000+prev.number/10);
-				if(!set.contains(nexti)) {
-					que.add(new Order(nexti,prev.order,'R'));
-					set.add(nexti);
+				if(!visited[nexti]) {
+					que.add(new Order(nexti,prev.carr,'R'));
+					visited[nexti]=true;
 				}
 			}
 		}
@@ -71,19 +69,18 @@ public class BJ_9019 {
 	
 	private static class Order{
 		int number;
-		List<Character> order;
-		public Order(int number, List<Character> ori, char next) {
+		char[] carr;
+		public Order(int number, char[] ori, char next) {
 			super();
 			this.number = number;
-			this.order = new ArrayList<Character>(ori);
-			this.order.add(next);
+			this.carr = new char[ori.length+1];
+			System.arraycopy(ori, 0, carr, 0, ori.length);
+			carr[ori.length]=next;
 		}
 		
-		public Order(int number, List<Character> l) {
+		public Order(int number) {
 			this.number=number;
-			this.order = l;
+			this.carr = new char[0];
 		}
-		
 	}
-	
 }
