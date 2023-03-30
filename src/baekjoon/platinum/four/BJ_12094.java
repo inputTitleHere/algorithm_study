@@ -1,11 +1,11 @@
-package baekjoon.gold.two;
+package baekjoon.platinum.four;
 
 import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
 
-public class BJ_12100 {
+public class BJ_12094 {
 	static int max;
 	static int n;
 	static int[][] dir = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
@@ -27,7 +27,7 @@ public class BJ_12100 {
 
 	
 	static void dfs(int[][] board, int step) {
-		if (step == 5) {
+		if (step == 10) {
 			int local = 0;
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
