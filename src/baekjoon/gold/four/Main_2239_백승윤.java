@@ -15,8 +15,6 @@ public class Main_2239_백승윤 {
 		sudoku = new int[9][9];
 
 		// 몇번 줄 무슨 숫자 사용 여부
-		
-
 		zeros = new ArrayList<>(81);
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
@@ -31,14 +29,10 @@ public class Main_2239_백승윤 {
 				block[blockNo][next]=true;
 			}
 		}
-
 		dfs(0);
-
 	}
 
 	private static boolean dfs(int curr) {
-		System.out.println();
-		System.out.print(curr+" : ");
 		if(curr==zeros.size()) {
 			StringBuilder sb = new StringBuilder();
 			for(int i=0;i<9;i++) {
@@ -53,7 +47,6 @@ public class Main_2239_백승윤 {
 		
 		int[] pos = zeros.get(curr);
 		for(int i=1;i<10;i++) {
-			System.out.print(i);
 			int blockNo = (pos[0]/3)*3+pos[1]/3;
 			if(!(row[pos[0]][i] || col[pos[1]][i] || block[blockNo][i])) { // 사용가능한 숫자면
 				sudoku[pos[0]][pos[1]]=i;
