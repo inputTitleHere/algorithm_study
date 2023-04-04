@@ -12,7 +12,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 // Java 11 : 136ms
-public class BJ_17472 {
+public class Main_17472_백승윤 {
 	static int[][] map;
 	static int[][] dir = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
 
