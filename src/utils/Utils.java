@@ -19,4 +19,23 @@ public class Utils {
 			System.in.read(); // 윈도우때문에 -> 백준이 리눅스 기반으로 알고있음. 이거 필요없음.
 		return n;
 	}
+	
+	
+	/**
+	 * 빠른 배열 채우기 -> log2n?
+	 * @param arr
+	 * @param with
+	 * @return
+	 */
+	static int[] fastFill(int[] arr, int with) {
+		int len = arr.length;
+		arr[0] = with;
+
+		int ptr = 1;
+		while (ptr < len) {
+			System.arraycopy(arr, 0, arr, ptr, ptr << 1 < len ? ptr : len - ptr);
+			ptr <<= 1;
+		}
+		return arr;
+	}
 }

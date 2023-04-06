@@ -1,18 +1,17 @@
 package test;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Test {
 	public static void main(String[] args) {
+		char[] carr = new char[10];
 		
-		int[][][] board = new int[5][5][5];
-		int n = 0;
-		for(int i=0;i<5;i++) {
-			for(int j=0;j<5;j++) {
-				for(int k=0;k<5;k++) {
-					board[i][j][k]= n++;
-				}
-			}
-		}
+		carr[0]='A';
+		carr[1]='A';
+		carr[2]='A';
+		String s= new String(carr);
+		
+		System.out.println(s.length());
+		System.out.println(s.trim().length());
 	}
 }

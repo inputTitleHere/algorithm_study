@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class SWEA_TestSample_1767 {
+public class Solution_1767_백승윤 {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static int[][] dir = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
 	static List<int[]> cpuList;
