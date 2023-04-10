@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BJ_17136 { // TODO
+public class Main_17136_백승윤 { // TODO
 
 	static int[] remain = { 0, 5, 5, 5, 5, 5 };
 	static int global = Integer.MAX_VALUE;
