@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Main_2798_백승윤 {
+public class Main_2798 {
 
 	static int sum = 0;
 	static int max = 0;
