@@ -4,14 +4,10 @@ import java.util.*;
 
 public class Test {
 	public static void main(String[] args) {
-		char[] carr = new char[10];
+		StringTokenizer stk = new StringTokenizer(":");
+		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+		while(stk.hasMoreTokens()) {
+		}
 		
-		carr[0]='A';
-		carr[1]='A';
-		carr[2]='A';
-		String s= new String(carr);
-		
-		System.out.println(s.length());
-		System.out.println(s.trim().length());
 	}
 }
